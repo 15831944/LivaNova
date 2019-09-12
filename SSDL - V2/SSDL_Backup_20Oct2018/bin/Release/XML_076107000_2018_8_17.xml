@@ -1,0 +1,1097 @@
+<eExact xsi:noNamespaceSchemaLocation="eExact - Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Items>
+    <Item code="076107000">
+      <Condition>A</Condition>
+      <BOMs>
+        <BOM code="076107000" versionnumber="1">
+          <Description>test</Description>
+          <Linetype />
+          <MainVersion>1</MainVersion>
+          <Condition>N</Condition>
+          <EffectiveDate>2018-08-17</EffectiveDate>
+          <DrawingNo>076107000</DrawingNo>
+          <Quantity>1</Quantity>
+          <Costcenter code="MD1">
+          </Costcenter>
+          <BOMLine type="I" sequencenumber="1">
+            <Item code="887732011" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="2">
+            <Item code="030656065" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.65000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="3">
+            <Item code="030656015" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.15000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="4">
+            <Item code="888685001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="5">
+            <Item code="030706085" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.70000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="6">
+            <Item code="030656075" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.75000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="7">
+            <Item code="000005253" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>8.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="8">
+            <Item code="000000345" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>26.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="9">
+            <Item code="000089356" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="10">
+            <Item code="000003707" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="11">
+            <Item code="324000968" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="12">
+            <Item code="000003709" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="13">
+            <Item code="887003082" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="14">
+            <Item code="888003710" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="15">
+            <Item code="888030213" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="16">
+            <Item code="887000014" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>9.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="17">
+            <Item code="888003711" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="18">
+            <Item code="000000574" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="19">
+            <Item code="000000106" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="20">
+            <Item code="888003712" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="21">
+            <Item code="887030227" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="22">
+            <Item code="887030206" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="23">
+            <Item code="887030228" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="24">
+            <Item code="887030205" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="25">
+            <Item code="887013042" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="26">
+            <Item code="030651010" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.10000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="27">
+            <Item code="000000393" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="28">
+            <Item code="030656009" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.18000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="29">
+            <Item code="888683001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="30">
+            <Item code="523500001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.02000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="31">
+            <Item code="401596000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>9.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="32">
+            <Item code="000475009" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="33">
+            <Item code="887003060" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="34">
+            <Item code="887030193" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="35">
+            <Item code="190710200" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="36">
+            <Item code="190710230" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.30000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="37">
+            <Item code="190713245" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.45000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="38">
+            <Item code="190713230" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.30000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="39">
+            <Item code="452027010" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="40">
+            <Item code="000000155" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="41">
+            <Item code="000000743" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="42">
+            <Item code="030660208" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.08000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="43">
+            <Item code="000000692" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.25000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="44">
+            <Item code="030660012" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.12000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="45">
+            <Item code="887732000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="46">
+            <Item code="000000652" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="47">
+            <Item code="000121004" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="48">
+            <Item code="000121007" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="49">
+            <Item code="420158000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="50">
+            <Item code="000006896" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>4.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="51">
+            <Item code="402161002" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>6.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="52">
+            <Item code="030706090" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.90000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="53">
+            <Item code="402019000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>11.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="54">
+            <Item code="401589000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="55">
+            <Item code="030653080" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.60000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="56">
+            <Item code="401572000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="57">
+            <Item code="030653020" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.60000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="58">
+            <Item code="000000365" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>28.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="59">
+            <Item code="030653110" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.10000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="60">
+            <Item code="401560000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="61">
+            <Item code="030651185" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.85000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="62">
+            <Item code="401593000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>5.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="63">
+            <Item code="030653010" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.10000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="64">
+            <Item code="887000601" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>5.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="65">
+            <Item code="030706002" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.08000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="66">
+            <Item code="030653050" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.50000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="67">
+            <Item code="038420024" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="68">
+            <Item code="030653012" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.36000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="69">
+            <Item code="030651060" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.60000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="70">
+            <Item code="030706060" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.60000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="71">
+            <Item code="030653170" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.70000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="72">
+            <Item code="000000023" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="73">
+            <Item code="431027361" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="74">
+            <Item code="887030331" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="75">
+            <Item code="000006885" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="76">
+            <Item code="000169000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="77">
+            <Item code="401567000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="78">
+            <Item code="887734001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="79">
+            <Item code="030656014" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.14000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="80">
+            <Item code="401565000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="81">
+            <Item code="887733001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="82">
+            <Item code="401574000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="83">
+            <Item code="401561000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="84">
+            <Item code="030656080" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.80000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="85">
+            <Item code="030656040" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.40000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="86">
+            <Item code="030651065" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.65000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="87">
+            <Item code="030656215" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.15000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="88">
+            <Item code="030653120" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.20000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="89">
+            <Item code="030706010" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.10000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="90">
+            <Item code="030706074" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.74000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="91">
+            <Item code="030660061" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.61000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="92">
+            <Item code="030653090" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.90000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="93">
+            <Item code="887003074" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="94">
+            <Item code="030706003" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.06000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="95">
+            <Item code="415022000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="96">
+            <Item code="401558000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="97">
+            <Item code="401559000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="98">
+            <Item code="887000168" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="99">
+            <Item code="887733000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="100">
+            <Item code="887733008" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="101">
+            <Item code="887732008" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="102">
+            <Item code="887738000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="103">
+            <Item code="887736001" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="104">
+            <Item code="887001290" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="105">
+            <Item code="887732002" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="106">
+            <Item code="887030392" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="107">
+            <Item code="887736000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="108">
+            <Item code="000000107" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="109">
+            <Item code="000000025" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="110">
+            <Item code="250870000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="111">
+            <Item code="250871000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="112">
+            <Item code="250895000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>2.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="113">
+            <Item code="000000570" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="114">
+            <Item code="030143100" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="115">
+            <Item code="415021000" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="116">
+            <Item code="000000664" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1.00000000</Quantity>
+          </BOMLine>
+          <BOMLine type="L" sequencenumber="117">
+            <Item code="PRODUCTION HOURS" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>1</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>0.06</Quantity>
+          </BOMLine>
+          <BOMLine type="M" sequencenumber="118">
+            <Item code="OVERHEAD" />
+            <Condition>N</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>1</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>3.83</Quantity>
+          </BOMLine>
+          <BOMLine type="I" sequencenumber="119">
+            <Item code="ETO" />
+            <Condition>S</Condition>
+            <Warehouse code="KITR" />
+            <BackFlush>0</BackFlush>
+            <EffectiveDate>2018-08-17</EffectiveDate>
+            <Costcenter code="MD1" />
+            <Quantity>1</Quantity>
+          </BOMLine>
+        </BOM>
+      </BOMs>
+      <FreeFields>
+        <FreeNumbers>
+          <FreeNumber number="4">3.83</FreeNumber>
+          <FreeNumber number="9">4418.137</FreeNumber>
+        </FreeNumbers>
+      </FreeFields>
+    </Item>
+  </Items>
+</eExact>

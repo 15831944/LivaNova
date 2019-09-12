@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SSDL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SERVER_BOM_DATABASE_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">N:\BOM DATABASE\bomdata.mdb</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=N:\BOM DATABASE\bomdata.mdb;Persist Security Info=False</Value>
+    </Setting>
+    <Setting Name="Drawingpath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\Checking\Drawing\</Value>
+    </Setting>
+    <Setting Name="SymbolLibrary" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\Checking\SymbolLibrary\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

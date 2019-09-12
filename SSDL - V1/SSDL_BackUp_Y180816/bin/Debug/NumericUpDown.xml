@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NumericUpDown</name>
+    </assembly>
+    <members>
+        <member name="T:eisiWare.NumericUpDown">
+            <summary>
+            Interactionlogic for NumericUpDown.xaml
+            </summary>
+            <summary>
+            NumericUpDown
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._value">
+            <summary>
+            Dependency Object for the value of the UpDown Control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._minvalue">
+            <summary>
+            Dependency Object for the Minimal Value of the UpDown Control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._maxvalue">
+            <summary>
+            Dependency Object for the Maximal Value of the UpDown Control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._decimation">
+            <summary>
+            Dependency Object for the Maximal Value of the UpDown Control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._step">
+            <summary>
+            Dependency Object for the Step Value of the UpDown Control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._showButtons">
+            <summary>
+            Dependency Object for the state of visibility of the UpDown Buttons
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown.ValueChangedEvent">
+            <summary>
+            Event Definition Value Change
+            </summary>
+        </member>
+        <member name="E:eisiWare.NumericUpDown.ValueChanged">
+            <summary>
+            Event fired when value changes
+            </summary>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.OnValueChanged">
+            <summary>
+            Event Helper Function when Value is changed
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._minValue">
+            <summary>
+            Minimal possible value of the control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown._maxValue">
+            <summary>
+            Maximum possible value of the control
+            </summary>
+        </member>
+        <member name="F:eisiWare.NumericUpDown.thisReference">
+            <summary>
+            Reference for static Functions
+            </summary>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.#ctor">
+            <summary>
+            Default Constructor (nothing special here x) )
+            </summary>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.Finalize">
+            <summary>
+            Destroys the Class (sets thispointer null)
+            </summary>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.Decimation">
+            <summary>
+            Specifies / Reads the number of digits shown after the decimal point
+            </summary>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.Value">
+            <summary>
+            Gets / Sets the value that the control is showing
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+            <remarks>If Value exceeds <see cref="P:eisiWare.NumericUpDown.MaxValue"/> or falls below <see cref="P:eisiWare.NumericUpDown.MinValue"/>, an <see cref="T:System.ArgumentException"/> is thrown</remarks>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.ShowButtons">
+            <summary>
+            Specifies / Reads weather the UpDown Buttons are to be shown
+            </summary>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.MinValue">
+            <summary>
+            Gets / Sets the minimal value of the control's value
+            </summary>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.MaxValue">
+            <summary>
+            Gets / Sets the maximal value of the control's value
+            </summary>
+        </member>
+        <member name="P:eisiWare.NumericUpDown.Step">
+            <summary>
+            Gets / Sets the step size (increment / decrement size) of the control's value
+            </summary>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.Increment">
+            <summary>
+            Increments the control's value by the value defined by <see cref="P:eisiWare.NumericUpDown.Step"/>
+            </summary>
+            <remarks>The value doesn't increment over MaxValue or under MinValue</remarks>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.Decrement">
+            <summary>
+            Decrements the control's value by the value defined by <see cref="P:eisiWare.NumericUpDown.Step"/>
+            </summary>
+            <remarks>The value doesn't increment over MaxValue or under MinValue</remarks>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.validateValue(System.Object)">
+            <summary>
+            Validation function for the value.
+            Checks weather Value is inbetween <see cref="P:eisiWare.NumericUpDown.MinValue"/> and <see cref="P:eisiWare.NumericUpDown.MaxValue"/>
+            </summary>
+            <param name="value">The current value of the Dependency Property</param>
+            <returns><list type="bullet"><item><term>true</term><description>The Value is inbetween <see cref="P:eisiWare.NumericUpDown.MinValue"/> and <see cref="P:eisiWare.NumericUpDown.MaxValue"/></description></item><item><term>false</term><description>The value is out of bounds</description></item></list></returns>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.btnUp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handler for the Up Button Click.
+            Increments the <see cref="P:eisiWare.NumericUpDown.Value"/> by <see cref="P:eisiWare.NumericUpDown.Step"/>
+            </summary>
+            <param name="sender">The Up Button Control</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.btnDown_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handler for the Down Button Click.
+            Decrements the <see cref="P:eisiWare.NumericUpDown.Value"/> by <see cref="P:eisiWare.NumericUpDown.Step"/>
+            </summary>
+            <param name="sender">The Down Button Control</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.SetDecimationBinding(System.UInt32)">
+            <summary>
+            Sets the decimation binding.
+            </summary>
+            <param name="decimation">The decimation.</param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.ValuePropertyChangeCallback(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Change Event for Value
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.MinMaxValueCallback(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Change Event for Min and Max Value
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.DecimationCallback(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Change Event for Decimation
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.ucNumericUpDown_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Loaded event of the ucNumericUpDown control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:eisiWare.NumericUpDown.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:eisiWare.BtnHeightConverter">
+            <summary>
+            Value Conversion Class for the button height.
+            Divides the Hight of the control by two to get the height for one button.
+            </summary>
+        </member>
+        <member name="M:eisiWare.BtnHeightConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eisiWare.BtnHeightConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:eisiWare.BtnShowConverter">
+            <summary>
+            Value Converter for the Button Show Property.
+            Converts from <see cref="T:System.Boolean"/> to <see cref="T:System.Windows.Visibility"/>
+            </summary>
+        </member>
+        <member name="M:eisiWare.BtnShowConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eisiWare.BtnShowConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:eisiWare.BtnShowGridConverter">
+            <summary>
+            Value Converter for the Button Show Property.
+            Converts from <see cref="T:System.Boolean"/> to <see cref="T:System.Windows.Visibility"/>
+            </summary>
+        </member>
+        <member name="M:eisiWare.BtnShowGridConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eisiWare.BtnShowGridConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:eisiWare.DecimationConverter">
+            <summary>
+            Converter for the Text in the Value Text Box.
+            Makes sure that the correct decimation is displayed
+            </summary>
+        </member>
+        <member name="M:eisiWare.DecimationConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eisiWare.DecimationConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:eisiWare.Properties.Resources">
+            <summary>
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+            </summary>
+        </member>
+        <member name="P:eisiWare.Properties.Resources.ResourceManager">
+            <summary>
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+            </summary>
+        </member>
+        <member name="P:eisiWare.Properties.Resources.Culture">
+            <summary>
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+            </summary>
+        </member>
+    </members>
+</doc>

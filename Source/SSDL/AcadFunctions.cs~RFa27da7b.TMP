@@ -1,0 +1,905 @@
+﻿using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Runtime;
+using System;
+using System.Collections.Generic;
+using System.Data.OleDb;
+using System.IO;
+using System.Linq;
+
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using Autodesk.AutoCAD.Colors;
+using System.Windows.Forms;
+
+namespace SSDL
+{
+    public static class AcadFunctions
+    {
+        public static string partnoatt = "PARTNO";
+        public static string qtyatt = "QTY";
+        public static string itemnoatt = "ITEMNO";
+        public static string lenatt = "LEN";
+
+        public static void OpenDrawing(string strFileName)
+        {
+
+            DocumentCollection acDocMgr = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager;
+
+            if (File.Exists(strFileName))
+            {
+                acDocMgr.Open(strFileName, false);
+            }
+            else
+            {
+                acDocMgr.MdiActiveDocument.Editor.WriteMessage("File " + strFileName +
+                                                                " does not exist.");
+            }
+        }
+        static public void ExtractObjectsFromFile(string dwgpath, out string partno, out string qty, out string itemno)
+        {
+            partno = "";
+            qty = ""; itemno = "";
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+
+            // Create a database and try to load the file
+            Database db = new Database(false, true);
+            using (db)
+            {
+                try
+                {
+                    db.ReadDwgFile(dwgpath, System.IO.FileShare.Read, false, "");
+                }
+                catch (System.Exception)
+                {
+                    ed.WriteMessage("\nUnable to read Block file.");
+                    return;
+                }
+
+                Transaction tr = db.TransactionManager.StartTransaction();
+                using (tr)
+                {
+                    // Open the blocktable, get the modelspace
+                    BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+
+                    BlockTableRecord btr = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForRead);
+
+
+                    // Iterate through it, dumping objects
+                    foreach (ObjectId objId in btr)
+                    {
+                        Entity ent = (Entity)tr.GetObject(objId, OpenMode.ForRead);
+
+                        if (ent is AttributeDefinition)
+                        {
+                            if (((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).Tag == partnoatt)
+                            {
+                                partno = ((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).TextString;
+                            }
+                            else if (((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).Tag == itemnoatt)
+                            {
+                                itemno = ((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).TextString;
+                            }
+                            else if (((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).Tag == qtyatt)
+                            {
+                                qty = ((Autodesk.AutoCAD.DatabaseServices.AttributeDefinition)ent).TextString;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public static void InsertBlk(string filepath, string partnoval, string qtyval, string itemnoval)
+        {
+
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+
+            using (DocumentLock dl = doc.LockDocument())
+            {
+                for (int i = 0; i < Convert.ToInt32(qtyval); i++)
+                {
+                    using (Transaction tr = db.TransactionManager.StartTransaction())
+                    {
+                        BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                        ObjectId btrId = bt.GetBlock(filepath);
+                        if (btrId == ObjectId.Null)
+                            return;
+                        Dictionary<string, string> attValues = new Dictionary<string, string>();
+                        attValues.Add(partnoatt, partnoval);
+                        attValues.Add(qtyatt, "1");// qtyval);
+                        attValues.Add(itemnoatt, itemnoval);
+                        BlockTableRecord curSpace = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                        string blockName = System.IO.Path.GetFileNameWithoutExtension(filepath);
+
+                        PromptPointOptions opPt = new PromptPointOptions("pick the insert point of the blk");
+                        PromptPointResult resPt = default(PromptPointResult);
+                        resPt = ed.GetPoint(opPt);
+                        if (resPt.Status != PromptStatus.OK)
+                        {
+                            System.Windows.MessageBox.Show("fail to get the insert point");
+                            return;
+                        }
+
+                        Point3d ptInsert = default(Point3d);
+                        ptInsert = resPt.Value;
+
+                        BlockReference br = curSpace.InsertBlockReference(blockName, ptInsert, attValues);
+                        tr.Commit();
+                    }
+                }
+            }
+            return;
+
+            //Database db = Application.DocumentManager.MdiActiveDocument.Database;
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+
+            //using (Transaction trans = db.TransactionManager.StartTransaction())
+            //{
+            //    try
+            //    {
+            //        BlockTable bt = trans.GetObject(db.BlockTableId, OpenMode.ForRead) as BlockTable;
+            //        if (bt != null)
+            //        {
+            //            BlockTableRecord btr = trans.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite) as BlockTableRecord;
+            //            string blockname = System.IO.Path.GetFileNameWithoutExtension(filepath);
+
+            //            ObjectId id = default(ObjectId);
+            //            if (bt.Has(blockname))
+            //            {
+            //                BlockTableRecord btrSrc = trans.GetObject(bt[blockname], OpenMode.ForRead) as BlockTableRecord;
+            //                id = btrSrc.Id;
+            //            }
+            //            else
+            //            {
+            //                Database dbDwg = new Database(false, true);
+            //                dbDwg.ReadDwgFile(filepath, System.IO.FileShare.Read, true, "");
+            //                id = db.Insert(blockname, dbDwg, true);
+            //                dbDwg.Dispose();
+            //            }
+            //            PromptPointOptions opPt = new PromptPointOptions("pick the insert point of the blk");
+            //            PromptPointResult resPt = default(PromptPointResult);
+            //            resPt = ed.GetPoint(opPt);
+            //            if (resPt.Status != PromptStatus.OK)
+            //            {
+            //                System.Windows.MessageBox.Show("fail to get the insert point");
+            //                return;
+            //            }
+            //            Point3d ptInsert = default(Point3d);
+            //            ptInsert = resPt.Value;
+            //            BlockReference blkRef = new BlockReference(ptInsert , id);
+            //            btr.AppendEntity(blkRef);
+            //            trans.AddNewlyCreatedDBObject(blkRef, true);
+            //            trans.Commit();
+
+
+            //            UpdateAttributesInBlock(id, blockname, partnoatt, partnoval);
+            //            UpdateAttributesInBlock(id, blockname, qtyatt, qtyval);
+            //            UpdateAttributesInBlock(id, blockname, itemnoatt, itemnoval);
+            //        }
+            //    }
+            //    catch
+            //    {
+            //        System.Windows.MessageBox.Show("fail to read dwg file and insert in current database ");
+            //    }
+            //    finally
+            //    {
+            //        trans.Dispose();
+            //    }
+            //}
+        }
+
+        private static int UpdateAttributesInBlock(ObjectId btrId, string blockName, string attbName, string attbValue)
+        {
+            // Will return the number of attributes modified
+
+            int changedCount = 0;
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+
+            Transaction tr = doc.TransactionManager.StartTransaction();
+            using (tr)
+            {
+                BlockTableRecord btr = (BlockTableRecord)tr.GetObject(btrId, OpenMode.ForRead);
+
+                // Test each entity in the container...
+
+                foreach (ObjectId entId in btr)
+                {
+                    Entity ent = tr.GetObject(entId, OpenMode.ForRead) as Entity;
+
+                    if (ent != null)
+                    {
+                        BlockReference br = ent as BlockReference;
+                        if (br != null)
+                        {
+                            BlockTableRecord bd = (BlockTableRecord)tr.GetObject(br.BlockTableRecord, OpenMode.ForRead);
+
+                            // ... to see whether it's a block with
+                            // the name we're after
+
+                            if (bd.Name.ToUpper() == blockName)
+                            {
+
+                                // Check each of the attributes...
+
+                                foreach (ObjectId arId in br.AttributeCollection)
+                                {
+                                    DBObject obj = tr.GetObject(arId, OpenMode.ForRead);
+                                    AttributeReference ar =
+                                      obj as AttributeReference;
+                                    if (ar != null)
+                                    {
+                                        // ... to see whether it has
+                                        // the tag we're after
+
+                                        if (ar.Tag.ToUpper() == attbName)
+                                        {
+                                            // If so, update the value
+                                            // and increment the counter
+
+                                            ar.UpgradeOpen();
+                                            ar.TextString = attbValue;
+                                            ar.DowngradeOpen();
+                                            changedCount++;
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Recurse for nested blocks
+                            changedCount += UpdateAttributesInBlock(br.BlockTableRecord, blockName, attbName, attbValue);
+                        }
+                    }
+                }
+                tr.Commit();
+            }
+            return changedCount;
+        }
+    }
+
+    public class AcadCommands
+    {
+        [CommandMethod("opendrawing")]
+        public void opendrawing()
+        {
+            MainWindow od = new MainWindow();
+            od.ShowDialog();
+        }
+
+        [CommandMethod("OpenSymbolLibrary")]
+        public void OpenSymbolLibrary()
+        {
+            BlockView od = new BlockView();
+            od.ShowDialog();
+        }
+
+        [CommandMethod("GenerateBOM")]
+        public void GenerateBOM()
+        {
+            BOM od = new BOM();
+            od.Generate(placeInAutoCAD: true);
+        }
+
+        [CommandMethod("PrintBOM")]
+        public void PrintBOM()
+        {
+            BOM od = new BOM();
+            od.Generate(ExcelOutput: true);
+        }
+
+        [CommandMethod("PrintTimeRollUp")]
+        public void PrintTimeRollUp()
+        {
+            BOM od = new BOM();
+            od.timerollupfunctionality();
+        }
+    }
+
+    public static class DatabaseClass
+    {
+
+        public static System.Data.DataTable GetProductsRM()
+        {
+            // string query = "SELECT  *, RIGHT('000000000'+CAST(RM_No AS VARCHAR(9)),9) from Products_RM";
+            //string query = "SELECT *, Format(RM_No, '000000000) as 'RM_No1' from Products_RM";
+            string query = "SELECT Format(RM_No, '000000000') as RM_No,RM_Desc,Vendor_Num,UoM,Std_Cost, fldTimeRollup from Products_RM";
+            return getFromDataBase(query);// "SELECT * from Products_RM");
+        }
+
+        public static System.Data.DataTable GetTimeRollupCategories()
+        {
+            return getFromDataBase("SELECT * from tblTime_Rollup_Categories order by fldCategory");
+        }
+
+        public static System.Data.DataTable getFromDataBase(string query)
+        {
+            IniFile getpath = new IniFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Settings.ini"));
+            string mdb = getpath.IniReadValue("FilePath", "SERVER_BOM_DATABASE_PATH");
+            //= Properties.Settings.Default.SERVER_BOM_DATABASE_PATH;
+            string constring = getpath.IniReadValue("FilePath", "ConnectionString");
+
+            System.Data.DataTable dtProducts_RM = new System.Data.DataTable();
+            using (OleDbConnection connection = new OleDbConnection(constring))
+            {
+                if (connection.State == System.Data.ConnectionState.Open)
+                    connection.Close();
+                connection.Open();
+                //Adjust your query
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection); //This assigns the Select statement and connection of the data adapter 
+
+                OleDbCommandBuilder oleDbCommandBuilder = new OleDbCommandBuilder(adapter); //This builds the update and Delete queries for the table in the above SQL. this only works if the select is a single table. 
+
+                adapter.Fill(dtProducts_RM);
+
+            }
+            return dtProducts_RM;
+        }
+
+
+
+    }
+
+    public class BOM
+    {
+        List<KeyValuePair<string, string>> sheetvalue = new List<KeyValuePair<string, string>>();
+
+        private System.Data.DataTable Get_Drawingdata()
+        {
+            System.Data.DataTable dt = DatabaseClass.GetProductsRM();
+
+            System.Data.DataTable dtnewExcel = new System.Data.DataTable();
+
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            Database db = doc.Database;
+
+
+
+            System.Data.DataTable dtnew = new System.Data.DataTable();
+            dtnew.Columns.Add("Itemno");
+            dtnew.Columns.Add("Partno");
+            dtnew.Columns.Add("Quantity", typeof(double));// System.Type.GetType("System.Int32"));
+            dtnew.Columns.Add("Description");
+            dtnew.Columns.Add("Timerollup", System.Type.GetType("System.Int32"));
+
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                // Open the blocktable, get the modelspace
+                // BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                // BlockTableRecord btr = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForRead);
+                string partno = "", itemno = "", qty = "", desc = "", timerollup = "", len = "";
+                bool lenavail = false;
+                System.Data.DataRow dr = null;
+
+                try
+                {
+                    // Build a filter list so that only
+                    // block references are selected
+                    TypedValue[] filList = new TypedValue[1] { new TypedValue((int)DxfCode.Start, "INSERT") };
+                    SelectionFilter filter = new SelectionFilter(filList);
+                    PromptSelectionOptions opts = new PromptSelectionOptions();
+                    PromptSelectionResult res = ed.SelectAll(filter);
+
+                    // Do nothing if selection is unsuccessful
+                    if (res.Status != PromptStatus.OK)
+                        return null;
+
+                    SelectionSet selSet = res.Value;
+                    ObjectId[] idArray = selSet.GetObjectIds();
+                    foreach (ObjectId blkId in idArray)
+                    {
+                        BlockReference blkRef = (BlockReference)tr.GetObject(blkId, OpenMode.ForRead);
+                        // btr.Dispose();
+
+                        AttributeCollection attCol = blkRef.AttributeCollection;
+
+                        if (blkRef.Name.Equals("SheetFormat", StringComparison.InvariantCultureIgnoreCase) || blkRef.Name.StartsWith("Title", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            foreach (ObjectId attId in attCol)
+                            {
+                                AttributeReference attRef = (AttributeReference)tr.GetObject(attId, OpenMode.ForRead);
+
+                                if (attRef.Tag.Equals("ECO", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    sheetvalue.Add(new KeyValuePair<string, string>("ECO", attRef.TextString));
+                                }
+                                else if (attRef.Tag.Equals("SHT", StringComparison.InvariantCultureIgnoreCase) || attRef.Tag.Equals("PAGES", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    sheetvalue.Add(new KeyValuePair<string, string>("SHT", attRef.TextString));
+                                }
+                                else if (attRef.Tag.Equals("DRG", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    sheetvalue.Add(new KeyValuePair<string, string>("DRG", attRef.TextString));
+                                }
+                                else if (attRef.Tag.Equals("REV", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    sheetvalue.Add(new KeyValuePair<string, string>("REV", attRef.TextString));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (ObjectId attId in attCol)
+                            {
+                                AttributeReference attRef = (AttributeReference)tr.GetObject(attId, OpenMode.ForRead);
+
+                                if (attRef.Tag.Equals(AcadFunctions.partnoatt, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    partno = attRef.TextString;
+                                }
+                                else if (attRef.Tag.Equals(AcadFunctions.itemnoatt, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    itemno = attRef.TextString;
+                                }
+                                else if (attRef.Tag.Equals(AcadFunctions.qtyatt, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    if (string.IsNullOrEmpty(attRef.TextString))
+                                        qty = "0";
+                                    else
+                                        qty = attRef.TextString;
+                                }
+                                else if (attRef.Tag.Equals(AcadFunctions.lenatt, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    lenavail = true;
+                                    len = attRef.TextString;
+                                }
+                            }
+                            try
+                            {
+                                dr = dt.Select("RM_No =" + partno)[0];
+                                if (dr == null || lenavail)
+                                    dr = dt.Select("RM_No =" + blkRef.Name)[0];
+
+                                if (lenavail)
+                                {
+                                    qty = len;
+                                    partno = partno.Substring(0, 6) + len.PadLeft(3, '0');
+                                }
+
+                                desc = dr["RM_Desc"].ToString();
+
+                                if (dr["fldTimeRollup"] != null)
+                                {
+                                    if (!string.IsNullOrEmpty(dr["fldTimeRollup"].ToString()))
+                                        timerollup = dr["fldTimeRollup"].ToString();
+                                    else
+                                        timerollup = "0";
+                                }
+                                else
+                                    timerollup = "0";
+
+                            }
+                            catch
+                            {
+                                desc = "";
+                            }
+                            try
+                            {
+                                dtnew.Rows.Add(itemno, partno, qty, desc, timerollup);
+                            }
+                            catch { }
+                        }
+
+                    }
+                    tr.Commit();
+                }
+                catch (Autodesk.AutoCAD.Runtime.Exception ex)
+                {
+                    //ed.WriteMessage(("Exception: " + ex.Message));
+                }
+
+
+                if (dtnew.Rows.Count > 0)
+                {
+
+                    var result = dtnew.AsEnumerable()
+                         .GroupBy(x => new { item = x.Field<string>("Itemno"), part = x.Field<string>("Partno"), desc = x.Field<string>("Description") })
+                         .Select(x => new
+                         {
+                             x.Key.item,
+                             x.Key.part,
+                             TotalSum = x.Sum(z => z.Field<double>("Quantity")),
+                             x.Key.desc,
+                             Timesum = x.Sum(z => z.Field<int>("Timerollup"))
+                         }).ToList();
+
+                    dtnewExcel.Columns.Add("Itemno", typeof(Int32));
+                    dtnewExcel.Columns.Add("Quantity", typeof(double));// System.Type.GetType("System.Int32"));
+                    dtnewExcel.Columns.Add("Partno");
+                    dtnewExcel.Columns.Add("Temp");
+                    dtnewExcel.Columns.Add("Description");
+                    dtnewExcel.Columns.Add("Timerollup");
+
+                    foreach (var item in result)
+                    {
+                        try
+                        {
+                            if (item.item == "" || item.item == null)
+                                dtnewExcel.Rows.Add("0", item.TotalSum, item.part, "", item.desc, item.Timesum);
+                            else
+                                dtnewExcel.Rows.Add(item.item, item.TotalSum, item.part, "", item.desc, item.Timesum);
+                        }
+                        catch (System.Exception ex)
+                        {
+
+                        }
+                    }
+
+                    DataView dv = dtnewExcel.DefaultView;
+                    dv.Sort = "Itemno";
+                    dtnewExcel = dv.ToTable();
+                }
+            }
+            return dtnewExcel;
+        }
+
+        public void Generate(bool placeInAutoCAD = false, bool ExcelOutput = false, bool Timerollup = false)
+        {
+            //  System.Data.DataTable dt = DatabaseClass.GetProductsRM();
+
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            Database db = doc.Database;
+
+            //List<KeyValuePair<string, string>> sheetvalue = new List<KeyValuePair<string, string>>();
+
+            System.Data.DataTable dtnew = Get_Drawingdata();
+            if (dtnew == null)
+            {
+                System.Windows.MessageBox.Show("No items found drawing");
+                return;
+            }
+
+            if (dtnew.Rows.Count > 0)
+            {
+
+                System.Data.DataTable dtnewExcel = new System.Data.DataTable();
+
+                //dtnewExcel.Columns.Add("Itemno");
+                //dtnewExcel.Columns.Add("Quantity", System.Type.GetType("System.Int32"));
+                //dtnewExcel.Columns.Add("Partno");
+                //dtnewExcel.Columns.Add("Temp");
+                //dtnewExcel.Columns.Add("Description");
+
+                //foreach (DataRow item in dtnew.Rows)
+                //{
+                //    dtnewExcel.Rows.Add(item["Itemno"].ToString(), item["Quantity"].ToString(), item["Partno"].ToString(), "", item["Description"].ToString());
+                //    //dtnewExcel.Rows.Add(item.item, item.TotalSum, item.part, "", item.desc);
+                //}
+
+                if (placeInAutoCAD)
+                {
+                    dtnewExcel = dtnew.DefaultView.ToTable(false, "Itemno", "Quantity", "Partno", "Description");
+                    try
+                    {
+                        /////create table on autocad
+                        this.createautocadtable(dtnewExcel);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        System.Windows.MessageBox.Show(ex.ToString());
+                    }
+                }
+
+                if (ExcelOutput)
+                {
+                    dtnewExcel = dtnew.DefaultView.ToTable(false, "Itemno", "Quantity", "Partno", "Temp", "Description");
+                    ///////Write on excel sheet
+                    ExcelCreationforXdata exc = new ExcelCreationforXdata();
+                    try
+                    {
+                        exc.Writehead(dtnewExcel, System.IO.Path.GetFileNameWithoutExtension(doc.Name), sheetvalue);
+                        System.Windows.MessageBox.Show("BOM Exported");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        System.Windows.MessageBox.Show(ex.ToString());
+                    }
+                }
+
+            }
+
+        }
+
+        public void timerollupfunctionality()
+        {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            Database db = doc.Database;
+
+            //List<KeyValuePair<string, string>> sheetvalue = new List<KeyValuePair<string, string>>();
+
+            System.Data.DataTable dtnew = Get_Drawingdata();
+            if (dtnew == null)
+            {
+                System.Windows.MessageBox.Show("No items found in drawing");
+                return;
+            }
+
+            System.Data.DataTable dtnewExcel = new System.Data.DataTable();
+            if (dtnew.Rows.Count > 0)
+            {
+                dtnewExcel = dtnew.DefaultView.ToTable(false, "Partno", "Description", "Timerollup");
+
+                System.Data.DataColumn newColumn = new System.Data.DataColumn("CP", typeof(System.String));
+                newColumn.DefaultValue = "C";
+                dtnewExcel.Columns.Add(newColumn);
+                dtnewExcel.Columns["CP"].SetOrdinal(0);
+            }
+
+
+            System.Data.DataTable dt = DatabaseClass.GetTimeRollupCategories();
+
+            List<View.clsTimeRollUp> _col = new List<View.clsTimeRollUp>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                int time = 0;
+                if (dr["fldTimeAllocated"] != null)
+                {
+                    if (!string.IsNullOrEmpty(dr["fldTimeAllocated"].ToString()))
+                        time = Convert.ToInt32(dr["fldTimeAllocated"].ToString());
+                }
+                _col.Add(new View.clsTimeRollUp() { include = false, Category = dr["fldCategory"].ToString(), Time = time });
+            }
+            string tempSum = (dtnewExcel.Rows.Count > 0) ? dtnewExcel.AsEnumerable().Sum(x => Convert.ToDouble(x["Timerollup"])).ToString() : "0";
+
+            string dwgNumber = "";
+            if (sheetvalue != null)
+            {
+                if (sheetvalue.Count > 0)
+                {
+                    foreach (KeyValuePair<string, string> kvp in sheetvalue)
+                    {
+                        if (kvp.Key == "DRG")
+                        {
+                            dwgNumber = kvp.Value;
+                        }
+                    }
+                }
+            }
+
+            View.Timerollup _frm = new View.Timerollup();
+            _frm.totalTimeFromDwg = Convert.ToDouble(tempSum);
+            _frm.drawingNumber = dwgNumber;
+            System.Collections.ObjectModel.ObservableCollection<View.clsTimeRollUp> myCollection = new System.Collections.ObjectModel.ObservableCollection<View.clsTimeRollUp>(_col as List<View.clsTimeRollUp>);
+            _frm.timeRollupCol = myCollection;
+            _frm.ShowDialog();
+
+            if (dtnewExcel.Columns.Count <= 0)
+            {
+                dtnewExcel.Columns.Add("Partno");
+                dtnewExcel.Columns.Add("Description");
+                dtnewExcel.Columns.Add("Timerollup");
+                //dtnewExcel.Columns.Add("Quantity");
+
+                System.Data.DataColumn newColumn = new System.Data.DataColumn("CP", typeof(System.String));
+                newColumn.DefaultValue = "C";
+                dtnewExcel.Columns.Add(newColumn);
+                dtnewExcel.Columns["CP"].SetOrdinal(0);
+            }
+
+            //Add only if yes given in message box in the form
+            if (_frm.readresult == true)
+            {
+                _col = _frm.timeRollupCol.ToList();
+
+                foreach (View.clsTimeRollUp _rollItem in _col.Where(a => a.include == true))
+                {
+                    dtnewExcel.Rows.Add("O", "", _rollItem.Category, _rollItem.Time);
+                }
+
+                tempSum = _frm.finalTimeFromUI.ToString();
+            }
+            else
+                return;
+
+
+
+            string sumObject = (dtnewExcel.Rows.Count > 0) ? dtnewExcel.AsEnumerable().Sum(x => Convert.ToInt32(x["Timerollup"])).ToString() : "0";
+            dtnewExcel.Rows.Add("", "", "Total", sumObject);
+
+            //DialogResult msgresult = MessageBox.Show("Do you want to continue with this time estimated \n Total time :" + sumObject, "", MessageBoxButtons.YesNo);
+
+            //if (msgresult == DialogResult.Yes)
+            //{
+            ExcelCreationforXdata exc = new ExcelCreationforXdata();
+            try
+            {
+                //dtnewExcel.AsEnumerable.ForEach(x => x["Timerollup"] = (double)x["Timerollup"] * (double)x["Quantity"]);
+                //dtnewExcel = dtnewExcel.DefaultView.ToTable(false, "Partno", "Description", "Timerollup");
+
+
+                //System.Data.DataTable dtResult = new System.Data.DataTable();
+                //dtResult.Columns.Add("Partno");
+                //dtResult.Columns.Add("Description");
+                //dtResult.Columns.Add("Timerollup");
+
+                //System.Data.DataColumn newColumn = new System.Data.DataColumn("CP", typeof(System.String));
+                //newColumn.DefaultValue = "C";
+                //dtResult.Columns.Add(newColumn);
+                //dtResult.Columns["CP"].SetOrdinal(0);
+
+                //foreach(DataRow drr in dtResult.Rows)
+                //{
+                //    dtResult.Rows.Add(drr["CP"].ToString(), drr["Partno"].ToString(), drr["Description"].ToString(), (Convert.ToDouble(drr["Timerollup"].ToString()) * Convert.ToDouble(drr["Quantity"].ToString())).ToString());
+                //}
+
+                exc.WriteonTimerollup(dtnewExcel, dwgNumber, tempSum, getProjectDesc());
+                System.Windows.MessageBox.Show("Time Rollup Exported");
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.ToString());
+            }
+            //}
+        }
+
+
+        private string getProjectDesc()
+        {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor acDocEd = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
+
+            // Create a TypedValue array to define the filter criteria
+            TypedValue[] acTypValAr = new TypedValue[2];
+            acTypValAr.SetValue(new TypedValue((int)DxfCode.Start, "MTEXT"), 0);
+            acTypValAr.SetValue(new TypedValue((int)DxfCode.Text, "*Label*"), 1);
+
+            // Assign the filter criteria to a SelectionFilter object
+            SelectionFilter acSelFtr = new SelectionFilter(acTypValAr);
+
+            PromptEntityOptions pOts = new PromptEntityOptions("Select Description");
+            pOts.AllowNone = true;
+            pOts.SetRejectMessage("Select a MTEXT starts with Label");
+            pOts.AddAllowedClass(typeof(Autodesk.AutoCAD.DatabaseServices.MText), true);
+            // Request for objects to be selected in the drawing area
+            PromptEntityResult acSSPrompt;
+            acSSPrompt = acDocEd.GetEntity(pOts);
+
+            // If the prompt status is OK, objects were selected
+            if (acSSPrompt.Status == PromptStatus.OK)
+            {
+                using (Transaction tr = doc.TransactionManager.StartTransaction())
+                {
+                    DBObject dbObj = tr.GetObject(acSSPrompt.ObjectId, OpenMode.ForRead);
+                    if (dbObj is MText)
+                    {
+                        return (dbObj as MText).Text.Replace("Label block", "").Replace("LABEL BLOCK", "").Replace(Environment.NewLine, " ").Replace("\n", " ").Trim();
+                    }
+                    else
+                        return "";
+                }
+
+                //return acSSet.Replace("Label block", "").Trim();
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+
+        public void createautocadtable(System.Data.DataTable dt)
+        {
+            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            Database db = doc.Database;
+
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                // Open the blocktable, get the modelspace
+                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTableRecord btr = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForRead);
+
+                /////creating table
+                Table tb = new Table();
+                tb.TableStyle = db.Tablestyle;
+                tb.SetSize(dt.Rows.Count + 2, dt.Columns.Count);
+                tb.SetRowHeight(3);
+                tb.SetColumnWidth(15);
+
+                PromptPointResult pPtRes;
+                PromptPointOptions pPtOpts = new PromptPointOptions("");
+
+                // Prompt for the start point
+                pPtOpts.Message = "\n Pick Insertion point: ";
+                pPtRes = doc.Editor.GetPoint(pPtOpts);
+                Point3d ptStart = pPtRes.Value;
+
+                // Exit if the user presses ESC or cancels the command
+                if (pPtRes.Status != PromptStatus.OK) return;
+
+                tb.Position = pPtRes.Value;// new Point3d(30, 260, 0);
+                //tb.SetCellType
+
+                string filepath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SheetFormat.dwg");
+                ObjectId btrId = bt.GetBlock(filepath);
+
+                Point3d ptInsert = new Point3d(0, 0, 0);
+                Dictionary<string, string> attValues = new Dictionary<string, string>();
+
+                //attValues.Add(partnoatt, partnoval);            
+
+                BlockTableRecord curSpace = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                string blockName = System.IO.Path.GetFileNameWithoutExtension(filepath);
+
+                // BlockReference br = curSpace.InsertBlockReference(blockName, ptInsert, attValues);
+
+                int i = 1;
+                int j = 0;
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+
+                    tb.Cells[i, j].TextHeight = 1;
+                    tb.Cells[i, j].TextString = dc.ColumnName.ToUpper();
+                    tb.Cells[i, j].Alignment = CellAlignment.MiddleCenter;
+                    j++;
+                }
+
+
+                i++;
+                foreach (System.Data.DataRow dr in dt.Rows)
+                {
+                    j = 0;
+
+                    foreach (Object dc in dr.ItemArray)
+                    {
+                        tb.Cells[i, j].TextHeight = 1;// tb.SetTextHeight(i, j, 1);
+                        tb.Cells[i, j].TextString = dc.ToString();// tb.SetTextString(i, j, dc.ToString());
+                        tb.Cells[i, j].Alignment = CellAlignment.MiddleCenter;// tb.SetAlignment(i, j, CellAlignment.MiddleCenter);
+                        j++;
+                    }
+
+                    i++;
+                }
+                tb.DeleteRows(0, 1);
+                tb.GenerateLayout();
+
+
+
+
+                //var tst = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
+                //var romansID = tst.Has("Roman") ? tst["Roman"] : db.Textstyle;
+                //var tsd = (DBDictionary)tr.GetObject(db.TableStyleDictionaryId, OpenMode.ForRead);
+                //if (!tsd.Contains("SomeStyle"))
+                //{
+                //    var ts = new TableStyle();
+                //    ts.SetTextHeight(5, (int)RowType.TitleRow);
+                //    ts.SetTextHeight(3.5, (int)RowType.HeaderRow);
+                //    ts.SetTextHeight(2, (int)RowType.DataRow);
+                //    ts.SetTextStyle(romansID, (int)(RowType.HeaderRow | RowType.TitleRow | RowType.DataRow));
+                //    ts.HorizontalCellMargin = 0.5;
+                //    ts.VerticalCellMargin = 0.5;
+                //    ts.SetGridColor(
+                //    Color.FromColorIndex(ColorMethod.ByAci, 2),
+                //    (int)GridLineType.AllGridLines, (int)RowType.DataRow);
+                //    ts.SetGridColor(
+                //    Color.FromColorIndex(ColorMethod.ByAci, 3),
+                //    (int)GridLineType.AllGridLines, (int)RowType.HeaderRow);
+                //    ts.SetGridColor(
+                //    Color.FromColorIndex(ColorMethod.ByAci, 4),
+                //    (int)GridLineType.AllGridLines, (int)RowType.TitleRow);
+                //    tsd.UpgradeOpen();
+                //    tsd.SetAt("SomeStyle", ts);
+                //    tr.AddNewlyCreatedDBObject(ts, true);
+
+                btr.AppendEntity(tb);
+                tr.AddNewlyCreatedDBObject(tb, true);
+                tr.Commit();
+            }
+        }
+
+    }
+
+}

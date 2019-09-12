@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSDL", "SSDL\SSDL.csproj", "{B8B7D61D-7916-4A3E-91A0-9BA9687C106F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWGViewer", "DWGViewer\DWGViewer.csproj", "{D6D31CC4-96AB-4F2A-AEC1-61C5F542C37E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericUpDown", "NumericUpDown\NumericUpDown.csproj", "{A1148F33-310E-43A4-AA5D-118881DE0362}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8B7D61D-7916-4A3E-91A0-9BA9687C106F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B7D61D-7916-4A3E-91A0-9BA9687C106F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B7D61D-7916-4A3E-91A0-9BA9687C106F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B7D61D-7916-4A3E-91A0-9BA9687C106F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D31CC4-96AB-4F2A-AEC1-61C5F542C37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D31CC4-96AB-4F2A-AEC1-61C5F542C37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D31CC4-96AB-4F2A-AEC1-61C5F542C37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D31CC4-96AB-4F2A-AEC1-61C5F542C37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1148F33-310E-43A4-AA5D-118881DE0362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1148F33-310E-43A4-AA5D-118881DE0362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1148F33-310E-43A4-AA5D-118881DE0362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1148F33-310E-43A4-AA5D-118881DE0362}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

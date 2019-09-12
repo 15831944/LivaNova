@@ -1,0 +1,112 @@
+﻿<Window x:Class="SSDL.PDFLayerview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SSDL" ResizeMode="NoResize"
+        mc:Ignorable="d" Loaded="Window_Loaded" Background="#FF5C5C5C"
+        Title="PDF Layer Conversion" Height="550" Width="500"  WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="#FFCBECB0"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="BorderBrush" Value="LightGray"></Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid Name="TemplateRoot" SnapsToDevicePixels="true">
+                            <Rectangle Fill="{TemplateBinding Background}"/>
+                            <Rectangle Name="PART_Track" Margin="0"/>
+                            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left" Margin="0">
+                                <Grid Name="Foreground">
+                                    <Rectangle Fill="{TemplateBinding Foreground}" Name="Indicator" />
+                                    <Grid Name="Animation" ClipToBounds="True">
+                                        <Border Name="PART_GlowRect"  Margin="0,0,0,0" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}"/>
+                                    </Grid>
+                                    <Grid Name="Overlay">
+                                    </Grid>
+                                </Grid>
+                            </Decorator>
+
+                            <Border BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsIndeterminate" Value="true">
+                                <Setter TargetName="Indicator" Property="Fill" Value="Transparent" />
+                                <Setter TargetName="PART_GlowRect" Property="Width" Value="100" />
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation 
+                                        Storyboard.TargetName="PART_GlowRect"
+                                        Storyboard.TargetProperty="Margin"
+                                        From="-50,0,0,0"  To="400,0,0,0" Duration="0:0:2"
+                                        AutoReverse="True" RepeatBehavior="Forever" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" Grid.Row="1" Content="Layer List" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        
+
+        <DataGrid Name="dgvLayerlist" BorderBrush="Black"  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" 
+                           CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+            
+                <DataGridTemplateColumn Width="50" Header="Include">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding Include,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Layer Name" Width="75*" Binding="{Binding LayerName,Mode=TwoWay}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="100" Header="Contains Data" Visibility="Collapsed" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding EntityAvail,Mode=TwoWay}" IsEnabled="False"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="BtnGenerate" Grid.Column="1" Grid.Row="3" Height="25"  HorizontalAlignment="Right" Width="67" Margin="3" Content="Generate" Click="BtnGenerate_Click" />
+        <Button Name="BtnClose" Grid.Column="2" Grid.Row="3" Height="25" Margin="3,3,0,3" Content="Close" Click="BtnClose_Click" />
+        <Grid Grid.Row="4" Margin="0" Name="gridProcess" Visibility="Collapsed" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Name="lblHeader" Foreground="White" Grid.Row="0" Content="Processing......"></Label>
+            <Label Name="lblStatusPublisher" Foreground="White" Grid.Row="1"></Label>
+            <ProgressBar Grid.Row="2" Margin="5,0,5,0" Name="pbStatus" Height="30" />
+            <TextBlock Grid.Row="2"  Foreground="Red" Name="txtPercentage" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>
